@@ -1,0 +1,123 @@
+source 21.4,25.01,29.21,21.01,23.78,21.09,27.01,20.04 Warning
+Learning, segments in list: 121
+source 29.21,21.01,23.78,21.09,27.01,20.04,27.45,26.15 Warning
+Learning, segments in list: 121
+source 23.78,21.09,27.01,20.04,27.45,26.15,25.5,27.05 Warning
+Learning, segments in list: 121
+source 27.01,20.04,27.45,26.15,25.5,27.05,28.15,28.8 Warning
+Learning, segments in list: 121
+source 27.45,26.15,25.5,27.05,28.15,28.8,26.7,29.25 Warning
+Learning, segments in list: 121
+source 25.5,27.05,28.15,28.8,26.7,29.25,27.3,29.9 Warning
+Learning, segments in list: 121
+source 28.15,28.8,26.7,29.25,27.3,29.9,26.15,27.8 Warning
+Learning, segments in list: 121
+source 26.7,29.25,27.3,29.9,26.15,27.8,26.9,29.0 Warning
+Learning, segments in list: 121
+source 27.3,29.9,26.15,27.8,26.9,29.0,26.95,27.4 Normal
+source 29.9,26.15,27.8,26.9,29.0,26.95,27.4,29.1 Warning
+Learning, segments in list: 121
+source 27.8,26.9,29.0,26.95,27.4,29.1,26.8,29.45 Warning
+Learning, segments in list: 121
+source 29.0,26.95,27.4,29.1,26.8,29.45,26.75,28.95 Warning
+Learning, segments in list: 121
+source 27.4,29.1,26.8,29.45,26.75,28.95,27.45,26.95 Warning
+Learning, segments in list: 121
+source 26.8,29.45,26.75,28.95,27.45,26.95,25.0,29.55 Normal
+source 29.45,26.75,28.95,27.45,26.95,25.0,29.55,29.45 Warning
+Learning, segments in list: 121
+source 28.95,27.45,26.95,25.0,29.55,29.45,26.25,25.25 Normal
+source 27.45,26.95,25.0,29.55,29.45,26.25,25.25,27.3 Normal
+source 26.95,25.0,29.55,29.45,26.25,25.25,27.3,25.35 Warning
+Learning, segments in list: 121
+source 29.55,29.45,26.25,25.25,27.3,25.35,28.0,26.4 Normal
+source 29.45,26.25,25.25,27.3,25.35,28.0,26.4,25.05 Normal
+source 26.25,25.25,27.3,25.35,28.0,26.4,25.05,28.45 Warning
+Learning, segments in list: 121
+source 27.3,25.35,28.0,26.4,25.05,28.45,29.05,28.05 Normal
+source 25.35,28.0,26.4,25.05,28.45,29.05,28.05,27.1 Normal
+source 28.0,26.4,25.05,28.45,29.05,28.05,27.1,27.65 Normal
+source 26.4,25.05,28.45,29.05,28.05,27.1,27.65,29.0 Normal
+source 25.05,28.45,29.05,28.05,27.1,27.65,29.0,29.85 Normal
+source 28.45,29.05,28.05,27.1,27.65,29.0,29.85,27.05 Normal
+source 29.05,28.05,27.1,27.65,29.0,29.85,27.05,29.5 Normal
+source 28.05,27.1,27.65,29.0,29.85,27.05,29.5,26.05 Normal
+source 27.1,27.65,29.0,29.85,27.05,29.5,26.05,27.3 Warning
+Learning, segments in list: 121
+source 29.0,29.85,27.05,29.5,26.05,27.3,28.05,25.95 Normal
+source 29.85,27.05,29.5,26.05,27.3,28.05,25.95,25.25 Normal
+source 27.05,29.5,26.05,27.3,28.05,25.95,25.25,25.95 Normal
+source 29.5,26.05,27.3,28.05,25.95,25.25,25.95,27.05 Normal
+source 26.05,27.3,28.05,25.95,25.25,25.95,27.05,26.3 Normal
+source 27.3,28.05,25.95,25.25,25.95,27.05,26.3,29.75 Warning
+Learning, segments in list: 121
+source 25.95,25.25,25.95,27.05,26.3,29.75,25.6,26.1 Warning
+Learning, segments in list: 121
+source 25.95,27.05,26.3,29.75,25.6,26.1,27.9,26.95 Warning
+Learning, segments in list: 121
+source 26.3,29.75,25.6,26.1,27.9,26.95,27.65,28.9 Normal
+source 29.75,25.6,26.1,27.9,26.95,27.65,28.9,26.05 Normal
+source 25.6,26.1,27.9,26.95,27.65,28.9,26.05,27.0 Normal
+source 26.1,27.9,26.95,27.65,28.9,26.05,27.0,27.15 Warning
+Learning, segments in list: 121
+source 26.95,27.65,28.9,26.05,27.0,27.15,25.0,27.14 Warning
+Learning, segments in list: 121
+source 28.9,26.05,27.0,27.15,25.0,27.14,29.29,31.43 Normal
+source 26.05,27.0,27.15,25.0,27.14,29.29,31.43,33.57 Warning
+Learning, segments in list: 121
+source 27.15,25.0,27.14,29.29,31.43,33.57,35.71,37.86 Warning
+Learning, segments in list: 121
+source 27.14,29.29,31.43,33.57,35.71,37.86,40.0,42.55 Warning
+Learning, segments in list: 121
+source 31.43,33.57,35.71,37.86,40.0,42.55,44.75,43.75 Warning
+Learning, segments in list: 121
+source 35.71,37.86,40.0,42.55,44.75,43.75,43.05,41.5 Warning
+Learning, segments in list: 121
+source 42.55,44.75,43.75,43.05,41.5,43.65,42.3,44.55 Warning
+Learning, segments in list: 121
+source 43.75,43.05,41.5,43.65,42.3,44.55,43.85,44.2 Warning
+Learning, segments in list: 121
+source 41.5,43.65,42.3,44.55,43.85,44.2,44.25,41.0 Warning
+Learning, segments in list: 121
+source 43.85,44.2,44.25,41.0,42.9,42.95,40.3,44.55 Warning
+Learning, segments in list: 121
+source 41.0,42.9,42.95,40.3,44.55,40.05,44.8,44.5 Warning
+Learning, segments in list: 121
+source 42.95,40.3,44.55,40.05,44.8,44.5,40.1,41.2 Warning
+Learning, segments in list: 121
+source 40.05,44.8,44.5,40.1,41.2,44.55,40.15,41.05 Warning
+Learning, segments in list: 121
+source 40.1,41.2,44.55,40.15,41.05,44.15,40.55,41.75 Warning
+Learning, segments in list: 121
+source 44.55,40.15,41.05,44.15,40.55,41.75,44.8,43.9 Warning
+Learning, segments in list: 121
+source 41.05,44.15,40.55,41.75,44.8,43.9,42.05,41.85 Warning
+Learning, segments in list: 121
+source 40.55,41.75,44.8,43.9,42.05,41.85,42.25,40.8 Warning
+Learning, segments in list: 121
+source 44.8,43.9,42.05,41.85,42.25,40.8,41.35,43.25 Warning
+Learning, segments in list: 121
+source 42.05,41.85,42.25,40.8,41.35,43.25,43.05,42.0 Warning
+Learning, segments in list: 121
+source 42.25,40.8,41.35,43.25,43.05,42.0,42.85,42.55 Warning
+Learning, segments in list: 121
+source 41.35,43.25,43.05,42.0,42.85,42.55,42.55,42.6 Warning
+Learning, segments in list: 121
+source 43.05,42.0,42.85,42.55,42.55,42.6,43.4,42.7 Warning
+Learning, segments in list: 121
+source 42.85,42.55,42.55,42.6,43.4,42.7,41.1,40.2 Warning
+Learning, segments in list: 121
+source 42.55,42.6,43.4,42.7,41.1,40.2,44.75,40.1 Warning
+Learning, segments in list: 121
+source 43.4,42.7,41.1,40.2,44.75,40.1,44.5,43.0 Warning
+Learning, segments in list: 121
+source 41.1,40.2,44.75,40.1,44.5,43.0,42.5,44.3 Warning
+Learning, segments in list: 121
+source 44.75,40.1,44.5,43.0,42.5,44.3,41.65,41.15 Warning
+Learning, segments in list: 121
+source 44.5,43.0,42.5,44.3,41.65,41.15,43.75,44.05 Warning
+Learning, segments in list: 121
+source 42.5,44.3,41.65,41.15,43.75,44.05,43.85,42.6 Warning
+Learning, segments in list: 121
+source 41.65,41.15,43.75,44.05,43.85,42.6,40.1,40.45 Warning
+

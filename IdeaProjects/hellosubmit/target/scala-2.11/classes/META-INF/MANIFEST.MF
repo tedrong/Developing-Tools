@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: /src/main/scala-2.11/com/spark/fjuted
+Main-Class: com.spark.fjuted.hello
+

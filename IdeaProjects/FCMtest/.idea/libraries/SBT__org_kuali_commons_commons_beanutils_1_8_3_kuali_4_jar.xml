@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SBT: org.kuali.commons:commons-beanutils:1.8.3-kuali-4:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.kuali.commons/commons-beanutils/jars/commons-beanutils-1.8.3-kuali-4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.kuali.commons/commons-beanutils/srcs/commons-beanutils-1.8.3-kuali-4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
