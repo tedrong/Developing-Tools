@@ -1,34 +1,39 @@
 package com.spark.fjuted
 
+import java.util
+import collection.JavaConversions._
+import collection.mutable._
+import java.text.SimpleDateFormat
+import java.util.Calendar
+
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.SparkConf
-import org.apache.spark.streaming.{Seconds, StreamingContext}
-
-import scala.collection.mutable.ArrayBuffer
+import org.apache.spark.streaming._
 
 /**
   * Created by teddy on 6/4/17.
   */
 object SD_Average_LOF {
-  Logger.getLogger("org.apache.spark").setLevel(Level.OFF)
+  Logger.getLogger("org.apache.spark").setLevel(Level.FATAL)
 
   def main(args: Array[String]): Unit ={
-    val conf = new SparkConf().setMaster("local[*]").setAppName("value_average")
+    val conf = new SparkConf().setMaster("local[*]").setAppName("Normal_Distribution")
     val ssc = new StreamingContext(conf, Seconds(1))
 
 
     val lines = ssc.socketTextStream("localhost", 9999)
 
-    val data = lines.window(Seconds(3), Seconds(1))
+    val data = lines.window(Seconds(32), Seconds(2))
     val values = data.map(info => info.toDouble)
     //val values = data.flatMap(_.split(',').take(2).drop(1)).map(info => info.toDouble)
 
     type row = ArrayBuffer[Double]
     var segment = new row
-    val trainlist = new ArrayBuffer[Double]
+    val trainlist = new ArrayBuffer[Array[Double]]
     val segment_size = 3
     val trainlist_size = 3
-    //val k_nearest = 6
+    val k_nearest = 3
+
 
     values.foreachRDD { rdd =>
       segment.clear()
@@ -37,51 +42,33 @@ object SD_Average_LOF {
       if (segment.size == segment_size) {
         // How many segments in training data list
         if (trainlist.size > trainlist_size) {
-          var square_sum = 0.0
-          var difference_sum = 0.0
-          var count = 0
-          for(count <- 0 until segment.length-1){
-            difference_sum = difference_sum + math.abs(segment(count) - segment(count+1))
-          }//for
-          val data_point = difference_sum/(segment.length-1)
-          val group_average = trainlist.sum/trainlist.length
+          val jul: java.util.List[Array[Double]] = trainlist
+          val model = new LOF(jul)
 
-          for(count <- 1 until segment.length){
-            square_sum = square_sum + math.pow(trainlist(count) - group_average, 2)
-          }//for
-
-          val standard = math.sqrt(square_sum/trainlist.length)
-
-          val flag_UpEvent:Boolean = data_point > group_average + 3 * standard
-          val flag_DownEvent:Boolean = data_point < group_average - 3 * standard
-
-          if(flag_UpEvent){
-            //println("Outlier found, LOF score: " + flag)
-            println("source " + segment.mkString(",") + "Up_Warning")
-          }
-          else if(flag_DownEvent){
-            //println("Outlier found, LOF score: " + flag)
-            println("source " + segment.mkString(",") + "Down_Warning")
+          val flag = model.getScore(trainlist(trainlist_size), k_nearest)
+          if(flag > 1){
+            println("Outlier found, LOF score: " + flag)
           }
           else {
-            //println("Normal, LOF score: " + flag)
-            println("source " + segment.mkString(",") + " Normal")
-            trainlist.append(data_point)
+            println("Normal, LOF score: " + flag)
+            trainlist.append(segment.toArray)
             trainlist.remove(0)
           }
-
         }//trainlist_size
         else{
           // Not enough simple, keep learning
-          var difference_sum = 0.0
+          val average = segment.sum/segment.length
+          var temp_sum = 0.0
           var count = 0
           for(count <- 0 until segment.length-1){
-            difference_sum = difference_sum + math.abs(segment(count) - segment(count+1))
+            temp_sum = temp_sum + math.pow(segment(count) - average, 2)
           }//for
-          val difference_average = difference_sum/(segment.length-1)
-          trainlist.append(difference_average)
+          val SD = math.sqrt(temp_sum/segment.length)
+          val array = Array(average, SD)
+
+          println(array)
+          trainlist.append(array)
           println("Learning, segments in list: " + trainlist.size)
-          println("In th trainlist: " + trainlist)
         }//else_trainlist_size
       }//segment_size
     }//foreachRDD
@@ -90,4 +77,12 @@ object SD_Average_LOF {
     ssc.awaitTermination()
 
   }//main
+
+  // TimeStamp Create Function
+  def Get_timestamp:String = {
+    val seed = Calendar.getInstance().getTime()
+    val stamp_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    val date = stamp_format.format(seed)
+    return date
+  }
 }
