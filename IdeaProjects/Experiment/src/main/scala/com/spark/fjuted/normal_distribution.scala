@@ -58,20 +58,21 @@ object normal_distribution {
               println("info" + " " + value.toString + " " + "Normal")
               state.update(new_mean, new_variance, counter + 1, "Normal")
             }//else
+
+            if (state.get._3 >= 512) {
+              // State : 1.Mean, 2.Variance, 3.Counter, 4.Status, 5.Timestamp
+              state.update((state.get._1+new_mean)/2, (state.get._2+new_variance)/2, 1, "window maintain")
+              println("window maintain...")
+            } //window size
           }//if counter > learning number
           else {
             state.update(new_mean, new_variance, counter + 1, "Learning")
           }//else
-        } //if_state.exist
+        }//if_state.exist
         else {
           state.update(value, 0.0, 1, null)
         } //Initial state
-
-        //if (state.get._3 > 200) {
-          //state.remove()
-        //} //window size
-      }
-    //UpdateFunction
+      }//UpdateFunction
 
     // Using mapWithState api to monitor stream data
     val result = pair.mapWithState(StateSpec.function(UpdateFunction)).stateSnapshots()

@@ -37,18 +37,16 @@ object value_average {
     values.foreachRDD { rdd =>
       segment.clear()
       segment ++= rdd.collect()
-      // LOF Dimention
+      // How many values in a group
       if (segment.size == segment_size) {
         // How many segments in training data list
         if (trainlist.size > trainlist_size) {
-          //println(segment)
-          //println(segment.sum)
-          //println(segment.length)
           val data_point = segment.sum/segment.length
           val group_average = trainlist.sum/trainlist.length
           var square_sum = 0.0
           var count = 0
 
+          // Counting σ^2
           for(count <- 0 until segment.length){
             square_sum = square_sum + math.pow(trainlist(count) - group_average, 2)
           }//for

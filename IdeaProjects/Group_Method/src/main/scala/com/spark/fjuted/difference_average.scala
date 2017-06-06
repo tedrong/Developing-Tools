@@ -36,7 +36,7 @@ object difference_average {
     values.foreachRDD { rdd =>
       segment.clear()
       segment ++= rdd.collect()
-      // LOF Dimention
+      // How many values in a group
       if (segment.size == segment_size) {
         // How many segments in training data list
         if (trainlist.size > trainlist_size) {

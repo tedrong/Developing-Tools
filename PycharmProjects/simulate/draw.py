@@ -3,7 +3,7 @@ import numpy as np
 
 from io import StringIO
 
-data = np.genfromtxt('../../../sin_train_test.txt',delimiter='\n')
+data = np.genfromtxt('/home/rong/Git/Developing-Tools/experiment_data/real',delimiter='\n')
 
 print(data)
 

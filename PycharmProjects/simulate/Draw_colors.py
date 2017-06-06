@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 datalist = []
-with open('/home/teddy/Git/some-tools/experiment_data/result/nd/real') as fp:
+with open('/home/rong/Git/Developing-Tools/experiment_data/sin') as fp:
     for line in fp:
         if line.find('info') != -1:
             datalist.append(line)

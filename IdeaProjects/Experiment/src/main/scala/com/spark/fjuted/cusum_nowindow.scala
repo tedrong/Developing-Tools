@@ -69,6 +69,12 @@ object cusum_nowindow {
               state.update(new_mean, new_variance, new_Sh, new_Sl, counter + 1, "Normal", window_flag)
             }
 
+            if (state.get._5 >= 512) {
+              // State : 1.Mean, 2.Variance, 3.S_high, 4.S_low, 5.Counter, 6.Status, 7.Timestamp
+              state.update((state.get._1+new_mean)/2, (state.get._2+new_variance)/2, (state.get._3+new_Sh)/2, (state.get._4+new_Sl)/2, 1, "window maintain", window_flag)
+              println("window maintain...")
+            } //window size
+
           } //if counter > learning number
           else {
             println(value.toString + "Learning")
@@ -78,10 +84,6 @@ object cusum_nowindow {
         else{
           state.update(value, 0.0, value, 0.0, 1, null, false)
         }//Initial state
-
-        //if(state.get._5 > 200){
-          //state.remove()
-        //}//window size
       }//UpdateFunction
 
     // Using mapWithState api to monitor stream data

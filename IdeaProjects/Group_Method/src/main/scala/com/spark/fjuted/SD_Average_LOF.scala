@@ -45,13 +45,24 @@ object SD_Average_LOF {
           val jul: java.util.List[Array[Double]] = trainlist
           val model = new LOF(jul)
 
-          val flag = model.getScore(trainlist(trainlist_size), k_nearest)
+          val average = segment.sum/segment.length
+          var temp_sum = 0.0
+          var count = 0
+          for(count <- 0 until segment.length-1){
+            temp_sum = temp_sum + math.pow(segment(count) - average, 2)
+          }//for
+          val SD = math.sqrt(temp_sum/segment.length)
+          val array = Array(average, SD)
+
+
+          val flag = model.getScore(array, k_nearest)
+
           if(flag > 1){
             println("Outlier found, LOF score: " + flag)
           }
           else {
             println("Normal, LOF score: " + flag)
-            trainlist.append(segment.toArray)
+            trainlist.append(array)
             trainlist.remove(0)
           }
         }//trainlist_size
