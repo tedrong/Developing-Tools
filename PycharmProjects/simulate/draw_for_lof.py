@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 datalist = []
-with open('/home/rong/Git/Developing-Tools/experiment_data/For_Group/group_result/SD_Average_LOF(normal_testData)/sin') as fp:
+with open('/home/rong/Git/Developing-Tools/experiment_data/For_Group/group_result/SD_Average_LOF(normal_testData)/real,k=8') as fp:
     for line in fp:
         if line.find('source') != -1:
             d1 = line.split()

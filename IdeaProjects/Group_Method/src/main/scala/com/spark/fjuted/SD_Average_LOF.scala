@@ -32,7 +32,7 @@ object SD_Average_LOF {
     val trainlist = new ArrayBuffer[Array[Double]]
     val segment_size = 8
     val trainlist_size = 120
-    val k_nearest = 3
+    val k_nearest = 1
 
 
     values.foreachRDD { rdd =>
