@@ -22,15 +22,15 @@ object difference_average {
 
     val lines = ssc.socketTextStream("localhost", 9999)
 
-    val data = lines.window(Seconds(3), Seconds(1))
+    val data = lines.window(Seconds(8), Seconds(1))
     val values = data.map(info => info.toDouble)
     //val values = data.flatMap(_.split(',').take(2).drop(1)).map(info => info.toDouble)
 
     type row = ArrayBuffer[Double]
     var segment = new row
     val trainlist = new ArrayBuffer[Double]
-    val segment_size = 3
-    val trainlist_size = 3
+    val segment_size = 8
+    val trainlist_size = 16
     //val k_nearest = 6
 
     values.foreachRDD { rdd =>
@@ -55,16 +55,16 @@ object difference_average {
 
           val standard = math.sqrt(square_sum/trainlist.length)
 
-          val flag_UpEvent:Boolean = data_point > group_average + 3 * standard
-          val flag_DownEvent:Boolean = data_point < group_average - 3 * standard
+          val flag_UpEvent:Boolean = data_point > group_average + 5 * standard
+          val flag_DownEvent:Boolean = data_point < group_average - 5 * standard
 
           if(flag_UpEvent){
             //println("Outlier found, LOF score: " + flag)
-            println("source " + segment.mkString(",") + "Up_Warning")
+            println("source " + segment.mkString(",") + " Up_Warning")
           }
           else if(flag_DownEvent){
             //println("Outlier found, LOF score: " + flag)
-            println("source " + segment.mkString(",") + "Down_Warning")
+            println("source " + segment.mkString(",") + " Down_Warning")
           }
           else {
             //println("Normal, LOF score: " + flag)
@@ -84,7 +84,7 @@ object difference_average {
           val difference_average = difference_sum/(segment.length-1)
           trainlist.append(difference_average)
           println("Learning, segments in list: " + trainlist.size)
-          println("In th trainlist: " + trainlist)
+          //println("In th trainlist: " + trainlist)
         }//else_trainlist_size
       }//segment_size
     }//foreachRDD

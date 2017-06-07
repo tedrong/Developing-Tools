@@ -23,16 +23,16 @@ object SD_Average_LOF {
 
     val lines = ssc.socketTextStream("localhost", 9999)
 
-    val data = lines.window(Seconds(32), Seconds(2))
+    val data = lines.window(Seconds(8), Seconds(1))
     val values = data.map(info => info.toDouble)
     //val values = data.flatMap(_.split(',').take(2).drop(1)).map(info => info.toDouble)
 
     type row = ArrayBuffer[Double]
     var segment = new row
     val trainlist = new ArrayBuffer[Array[Double]]
-    val segment_size = 3
-    val trainlist_size = 3
-    val k_nearest = segment_size
+    val segment_size = 8
+    val trainlist_size = 120
+    val k_nearest = 3
 
 
     values.foreachRDD { rdd =>
@@ -57,13 +57,15 @@ object SD_Average_LOF {
 
           val flag = model.getScore(array, k_nearest)
 
-          if(flag > 1){
-            println("Outlier found, LOF score: " + flag)
+          if(flag > 2){
+            //println("Outlier found, LOF score: " + flag)
+            println("source " + segment.mkString(",") + " Warning")
           }
           else {
-            println("Normal, LOF score: " + flag)
             trainlist.append(array)
             trainlist.remove(0)
+            //println("Normal, LOF score: " + flag)
+            println("source " + segment.mkString(",") + " Normal")
           }
         }//trainlist_size
         else{
@@ -77,7 +79,7 @@ object SD_Average_LOF {
           val SD = math.sqrt(temp_sum/segment.length)
           val array = Array(average, SD)
 
-          println(array)
+          //println(array.mkString("  "))
           trainlist.append(array)
           println("Learning, segments in list: " + trainlist.size)
         }//else_trainlist_size

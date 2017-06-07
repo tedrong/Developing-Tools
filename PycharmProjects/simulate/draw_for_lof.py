@@ -1,14 +1,14 @@
 import matplotlib.pyplot as plt
 
 datalist = []
-with open('/home/rong/Git/Developing-Tools/experiment_data/result/test') as fp:
+with open('/home/rong/Git/Developing-Tools/experiment_data/For_Group/group_result/SD_Average_LOF(normal_testData)/sin') as fp:
     for line in fp:
         if line.find('source') != -1:
             d1 = line.split()
             d2 = d1[1].split(",")
             print(d2)
             print(d2[7])
-            array = ([d2[7], d1[5]])
+            array = ([d2[7], d1[2]])
             datalist.append(array)
             #datalist.append(line)
 print(datalist)
