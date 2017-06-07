@@ -32,7 +32,7 @@ object Segments_LOF {
     val trainlist = new ArrayBuffer[Array[Double]]
     val segment_size = 8
     val trainlist_size = 120
-    val k_nearest = 3
+    val k_nearest = segment_size
 
     values.foreachRDD { rdd =>
       segment.clear()
@@ -45,14 +45,14 @@ object Segments_LOF {
           val model = new LOF(jul)
 
           val flag = model.getScore(segment.toArray, k_nearest)
-          if(flag > 1.1){
+          if(flag > 2){
             //println("Outlier found, LOF score: " + flag)
             println("source " + segment.mkString(",") + " LOF Score: " + flag + " Warning")
           }
           else {
             //println("Normal, LOF score: " + flag)
             trainlist.append(segment.toArray)
-            //trainlist.remove(0)
+            trainlist.remove(0)
             println("source " + segment.mkString(",") + " LOF Score: " + flag + " Normal")
           }
         }//trainlist_size

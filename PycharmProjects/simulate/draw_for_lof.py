@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 datalist = []
-with open('/home/rong/Git/Developing-Tools/experiment_data/result/LOF/temp') as fp:
+with open('/home/rong/Git/Developing-Tools/experiment_data/result/test') as fp:
     for line in fp:
         if line.find('source') != -1:
             d1 = line.split()
