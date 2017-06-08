@@ -40,7 +40,7 @@ object Segments_LOF {
       // LOF Dimention
       if (segment.size == segment_size) {
         // How many segments in training data list
-        if (trainlist.size > trainlist_size) {
+        if (trainlist.size >= trainlist_size) {
           val jul: java.util.List[Array[Double]] = trainlist
           val model = new LOF(jul)
 

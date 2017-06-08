@@ -23,7 +23,7 @@ object value_average {
 
     val lines = ssc.socketTextStream("localhost", 9999)
 
-    val data = lines.window(Seconds(8), Seconds(1))
+    val data = lines.window(Seconds(8), Seconds(8))
     val values = data.map(info => info.toDouble)
     //val values = data.flatMap(_.split(',').take(2).drop(1)).map(info => info.toDouble)
 
@@ -40,7 +40,7 @@ object value_average {
       // How many values in a group
       if (segment.size == segment_size) {
         // How many segments in training data list
-        if (trainlist.size > trainlist_size) {
+        if (trainlist.size >= trainlist_size) {
           val data_point = segment.sum/segment.length
           val group_average = trainlist.sum/trainlist.length
           var square_sum = 0.0
@@ -53,8 +53,8 @@ object value_average {
 
           val standard = math.sqrt(square_sum/trainlist.length)
 
-          val flag_UpEvent:Boolean = data_point > group_average + 9 * standard
-          val flag_DownEvent:Boolean = data_point < group_average - 9 * standard
+          val flag_UpEvent:Boolean = data_point > group_average + 5 * standard
+          val flag_DownEvent:Boolean = data_point < group_average - 5 * standard
 
 
           if(flag_UpEvent){

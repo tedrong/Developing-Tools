@@ -20,9 +20,9 @@ object difference_average {
     val ssc = new StreamingContext(conf, Seconds(1))
 
 
-    val lines = ssc.socketTextStream("localhost", 9999)
+    val lines = ssc.socketTextStream("localhost", 9998)
 
-    val data = lines.window(Seconds(8), Seconds(1))
+    val data = lines.window(Seconds(8), Seconds(8))
     val values = data.map(info => info.toDouble)
     //val values = data.flatMap(_.split(',').take(2).drop(1)).map(info => info.toDouble)
 
@@ -39,7 +39,7 @@ object difference_average {
       // How many values in a group
       if (segment.size == segment_size) {
         // How many segments in training data list
-        if (trainlist.size > trainlist_size) {
+        if (trainlist.size >= trainlist_size) {
           var square_sum = 0.0
           var difference_sum = 0.0
           var count = 0
