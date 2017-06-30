@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import random
 import os
 
-filename = 'random.txt'
+filename = 'generate/random.txt'
 
 if os.path.exists(filename):
     os.remove(filename)
@@ -12,7 +12,7 @@ else:
 list = []
 
 for loop in range(0, 128):
-    temp = round(random.uniform(20, 30), 2)
+    temp = round(random.uniform(0, 2), 2)
     list.append(temp)
 
 print(list)

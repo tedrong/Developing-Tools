@@ -15,7 +15,7 @@ object normal_distribution {
     val ssc = new StreamingContext(conf, Seconds(1))
     val lines = ssc.socketTextStream("localhost", 9999)
 
-    ssc.checkpoint("/home/rong/Desktop/Master_Programs/IdeaProjects/checkpoint")
+    ssc.checkpoint("/home/rong/Desktop/checkpoint")
 
     val pair = lines.map(info => ("SensorID", info))
 
