@@ -14,10 +14,10 @@ else:
 #learn = np.sin(learn_set)*2.5+20
 
 window_rads = np.linspace(0, 5*np.pi, 80)
-window = np.sin(window_rads)*2
+window = np.sin(window_rads)*6
 
 for loop in range(36, 46):
-    window[loop-1] = round(random.uniform(1.8, 2), 2)
+    window[loop-1] = round(random.uniform(5.8, 6), 2)
 
 f = open(filename, 'a')
 

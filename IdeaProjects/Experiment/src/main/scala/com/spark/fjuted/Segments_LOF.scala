@@ -21,7 +21,7 @@ object Segments_LOF {
     val ssc = new StreamingContext(conf, Seconds(1))
 
 
-    val lines = ssc.socketTextStream("localhost", 9999)
+    val lines = ssc.socketTextStream("localhost", 9998)
 
     val data = lines.window(Seconds(8), Seconds(1))
     val values = data.map(info => info.toDouble)
@@ -32,7 +32,7 @@ object Segments_LOF {
     val trainlist = new ArrayBuffer[Array[Double]]
     val segment_size = 8
     val trainlist_size = 121
-    val k_nearest = 8
+    val k_nearest = 3
 
     values.foreachRDD { rdd =>
       segment.clear()
@@ -45,7 +45,7 @@ object Segments_LOF {
           val model = new LOF(jul)
 
           val flag = model.getScore(segment.toArray, k_nearest)
-          if(flag > 1.5){
+          if(flag > 2){
             //println("Outlier found, LOF score: " + flag)
             println("source " + segment.mkString(",") + " LOF Score: " + flag + " Warning")
           }

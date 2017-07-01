@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-data = np.genfromtxt('ex2/point.txt',delimiter='\n')
+data = np.genfromtxt('ex2/group.txt',delimiter='\n')
 
 print(data)
 
@@ -9,7 +9,7 @@ plt.plot(data, color='black', linewidth=1.5, zorder=1)
 
 
 datalist = []
-with open('/home/rong/Desktop/Untitled Folder/Ex2/CUSUM/point') as fp:
+with open('/home/rong/Desktop/EX/Untitled Folder/Ex2/CUSUM/group') as fp:
     for line in fp:
         if line.find('info') != -1:
             datalist.append(line)

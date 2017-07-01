@@ -14,9 +14,9 @@ else:
 #learn = np.sin(learn_set)*2.5+20
 
 window_rads = np.linspace(0, 5*np.pi, 80)
-window = np.sin(window_rads)*2
-window[14] = 1.8
-window[35] = -1
+window = np.sin(window_rads)*6
+window[14] = 5.3
+window[35] = -5.8
 
 f = open(filename, 'a')
 

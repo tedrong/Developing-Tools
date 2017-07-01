@@ -21,7 +21,7 @@ object value_average {
     val ssc = new StreamingContext(conf, Seconds(1))
 
 
-    val lines = ssc.socketTextStream("localhost", 9999)
+    val lines = ssc.socketTextStream("localhost", 9998)
 
     val data = lines.window(Seconds(8), Seconds(6))
     val values = data.map(info => info.toDouble)

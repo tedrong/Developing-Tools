@@ -9,7 +9,7 @@ import scala.io.Source
   */
 object datapump2 {
   def main(args: Array[String]): Unit = {
-    val filename = "/home/rong/Desktop/Untitled Folder/Ex2/group"
+    val filename = "/home/rong/Desktop/EX/Untitled Folder/Ex2/group"
     val lines = Source.fromFile(filename).getLines.toList
     val filerow = lines.length
     println(filerow)

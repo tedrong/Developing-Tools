@@ -32,7 +32,7 @@ object SD_Average_LOF {
     val trainlist = new ArrayBuffer[Array[Double]]
     val segment_size = 8
     val trainlist_size = 121
-    val k_nearest = 8
+    val k_nearest = 3
 
 
     values.foreachRDD { rdd =>
@@ -57,7 +57,7 @@ object SD_Average_LOF {
 
           val flag = model.getScore(array, k_nearest)
 
-          if(flag > 1.5){
+          if(flag > 2){
             //println("Outlier found, LOF score: " + flag)
             println("source " + segment.mkString(",") + " Warning" +flag)
           }

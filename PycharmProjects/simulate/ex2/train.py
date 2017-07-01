@@ -14,7 +14,7 @@ else:
 #learn = np.sin(learn_set)*2.5+20
 
 window_rads = np.linspace(0, 8*np.pi, 128)
-window = np.sin(window_rads)*2
+window = np.sin(window_rads)*6
 
 f = open(filename, 'a')
 
