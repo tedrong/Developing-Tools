@@ -13,7 +13,7 @@ object cusum_nowindow {
   def main(args: Array[String]): Unit ={
     val conf = new SparkConf().setMaster("local[2]").setAppName("Threshold")
     val ssc = new StreamingContext(conf, Seconds(1))
-    val lines = ssc.socketTextStream("localhost", 9999)
+    val lines = ssc.socketTextStream("localhost", 9998)
 
     ssc.checkpoint("/home/rong/Desktop/Master_Programs/IdeaProjects/checkpoint")
 

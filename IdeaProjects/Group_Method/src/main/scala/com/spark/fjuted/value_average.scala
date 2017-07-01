@@ -23,7 +23,7 @@ object value_average {
 
     val lines = ssc.socketTextStream("localhost", 9999)
 
-    val data = lines.window(Seconds(8), Seconds(8))
+    val data = lines.window(Seconds(8), Seconds(6))
     val values = data.map(info => info.toDouble)
     //val values = data.flatMap(_.split(',').take(2).drop(1)).map(info => info.toDouble)
 
@@ -31,7 +31,7 @@ object value_average {
     var segment = new row
     val trainlist = new ArrayBuffer[Double]
     val segment_size = 8
-    val trainlist_size = 16
+    val trainlist_size = 21
     //val k_nearest = 6
 
     values.foreachRDD { rdd =>

@@ -3,13 +3,18 @@ import numpy as np
 
 from io import StringIO
 
-data = np.genfromtxt('generate/random.txt',delimiter='\n')
+data = np.genfromtxt('ex2/group.txt',delimiter='\n')
 
 print(data)
 
-plt.plot(data, color='green', linewidth=6.0)
+plt.plot(data, color='black', linewidth=1.5, zorder=1)
+
+counter = 0
+for row in data:
+    plt.scatter(counter, row, color='blue', marker=".", s=150, zorder=2)
+    counter += 1
 
 plt.xlabel('Data Serial number')
-plt.ylabel('Temperature')
-plt.axis([0,32,0,10])
+plt.ylabel('Value')
+#plt.axis([0,32,0,10])
 plt.show()

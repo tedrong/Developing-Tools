@@ -21,7 +21,7 @@ object SD_Average_LOF {
     val ssc = new StreamingContext(conf, Seconds(1))
 
 
-    val lines = ssc.socketTextStream("localhost", 9999)
+    val lines = ssc.socketTextStream("localhost", 9998)
 
     val data = lines.window(Seconds(8), Seconds(1))
     val values = data.map(info => info.toDouble)
@@ -31,8 +31,8 @@ object SD_Average_LOF {
     var segment = new row
     val trainlist = new ArrayBuffer[Array[Double]]
     val segment_size = 8
-    val trainlist_size = 120
-    val k_nearest = 1
+    val trainlist_size = 121
+    val k_nearest = 8
 
 
     values.foreachRDD { rdd =>
@@ -57,15 +57,15 @@ object SD_Average_LOF {
 
           val flag = model.getScore(array, k_nearest)
 
-          if(flag > 2){
+          if(flag > 1.5){
             //println("Outlier found, LOF score: " + flag)
-            println("source " + segment.mkString(",") + " Warning")
+            println("source " + segment.mkString(",") + " Warning" +flag)
           }
           else {
             trainlist.append(array)
             trainlist.remove(0)
             //println("Normal, LOF score: " + flag)
-            println("source " + segment.mkString(",") + " Normal")
+            println("source " + segment.mkString(",") + " Normal" + flag)
           }
         }//trainlist_size
         else{
