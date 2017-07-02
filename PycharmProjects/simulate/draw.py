@@ -3,7 +3,7 @@ import numpy as np
 
 from io import StringIO
 
-data = np.genfromtxt('ex2/group.txt',delimiter='\n')
+data = np.genfromtxt('/home/rong/Desktop/EX/Untitled Folder/Ex2/sin_test',delimiter='\n')
 
 print(data)
 
